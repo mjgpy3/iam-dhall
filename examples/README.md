@@ -41,4 +41,4 @@ generates policy JSON
 }
 ```
 
-Of course, any values can be passed to `specificBucketAccess`, or environment variables can be used by using dhall's `env:VAR_NAME` syntax.
+Of course, any `Text` values can be passed to `specificBucketAccess`, or environment variables can be supplied via dhall's `env:VAR_NAME` syntax.
