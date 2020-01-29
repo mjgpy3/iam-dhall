@@ -3,7 +3,20 @@ let L =
 
 let Service
     : Type
-    = < Lambda | Iam | Sqs | CloudWatch | ApiGateway | CloudWatchEvents | Sns >
+    = < Lambda
+      | Iam
+      | Sqs
+      | CloudWatch
+      | ApiGateway
+      | CloudWatchEvents
+      | Sns
+      | S3
+      | CloudFront
+      | CodeBuild
+      | Ssm
+      | Kms
+      | QuickSight
+      >
 
 let Action
     : Type
@@ -84,6 +97,7 @@ in  { Service = Service
     , Effect = Effect
     , Resource = Resource
     , Statement = Statement
+    , Policy = Policy
     , policy = policy
     , serviceAllow = serviceAllow
     , serviceAllowAll = serviceAllowAll
