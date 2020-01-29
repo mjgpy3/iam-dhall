@@ -44,12 +44,56 @@ let action
     =   λ(action : P.Action)
       → "${serviceIdentifier action.service}:${action.permission}"
 
+let arnAccountId
+    : Aws → P.Arn → Text
+    =   λ(aws : Aws)
+      → λ(arn : P.Arn)
+      → merge
+          { ApiGateway = ""
+          , S3 = ""
+          , Lambda = aws.accountId
+          , Iam = aws.accountId
+          , Sqs = aws.accountId
+          , CloudWatch = aws.accountId
+          , CloudWatchEvents = aws.accountId
+          , Sns = aws.accountId
+          , CloudFront = aws.accountId
+          , CodeBuild = aws.accountId
+          , Ssm = aws.accountId
+          , Kms = aws.accountId
+          , QuickSight = aws.accountId
+          }
+          arn.service
+
+let arnRegion
+    : Aws → P.Arn → Text
+    =   λ(aws : Aws)
+      → λ(arn : P.Arn)
+      → merge
+          { ApiGateway = aws.region
+          , S3 = ""
+          , Lambda = aws.region
+          , Iam = aws.region
+          , Sqs = aws.region
+          , CloudWatch = aws.region
+          , CloudWatchEvents = aws.region
+          , Sns = aws.region
+          , CloudFront = aws.region
+          , CodeBuild = aws.region
+          , Ssm = aws.region
+          , Kms = aws.region
+          , QuickSight = aws.region
+          }
+          arn.service
+
 let arn
     : Aws → P.Arn → Text
     =   λ(aws : Aws)
       → λ(arn : P.Arn)
       → "arn:aws:${serviceIdentifier
-                     arn.service}:${aws.region}:${aws.accountId}:${arn.resource}"
+                     arn.service}:${arnRegion aws arn}:${arnAccountId
+                                                           aws
+                                                           arn}:${arn.resource}"
 
 let resource
     : Aws → P.Resource → Text

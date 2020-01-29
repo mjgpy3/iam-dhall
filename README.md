@@ -3,7 +3,10 @@ Create IAM policies using [dhall][dhall].
 
 ## Usage
 
-TODO
+These dhall files were tested using `dhall-to-json` version `1.6.1` though I
+expect them to be compatible with other versions of the tool.
+
+See the [examples](./examples) for usage examples.
 
 ## Why?
 
@@ -13,7 +16,7 @@ daunting. This gets increasingly difficult in highly sensitive areas, e.g.
 healthcare, national defense, etc... where components are generally expected to
 abide by the [principle of least privilege][polp].
 
-But these are not the only challenges
+But these are not the only challenges provided by IAM policies
 
  - many policy errors don't surface until the policy is actually created (or,
  heaven forbid, during run-time) and JSON doesn't help to illuminate some of the
