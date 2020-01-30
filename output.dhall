@@ -32,6 +32,7 @@ let serviceIdentifier
           , Ssm = "ssm"
           , Kms = "kms"
           , QuickSight = "quicksight"
+          , ResourceGroups = "resource-groups"
           }
           service
 
@@ -62,6 +63,7 @@ let arnAccountId
           , Ssm = aws.accountId
           , Kms = aws.accountId
           , QuickSight = aws.accountId
+          , ResourceGroups = aws.accountId
           }
           arn.service
 
@@ -83,6 +85,7 @@ let arnRegion
           , Ssm = aws.region
           , Kms = aws.region
           , QuickSight = aws.region
+          , ResourceGroups = aws.region
           }
           arn.service
 

@@ -16,6 +16,7 @@ let Service
       | Ssm
       | Kms
       | QuickSight
+      | ResourceGroups
       >
 
 let Action
