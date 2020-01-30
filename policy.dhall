@@ -92,6 +92,15 @@ let serviceAllowAll
       → λ(permissions : List Text)
       → serviceAllowResources service permissions [ Resource.All ]
 
+let serviceAllAllowResource
+    : Service → Text → Statement
+    =   λ(service : Service)
+      → λ(resource : Text)
+      → serviceAllowResources
+          service
+          [ "*" ]
+          [ Resource.ByArn { service = service, resource = resource } ]
+
 in  { Service = Service
     , Action = Action
     , Arn = Arn
@@ -102,4 +111,5 @@ in  { Service = Service
     , policy = policy
     , serviceAllow = serviceAllow
     , serviceAllowAll = serviceAllowAll
+    , serviceAllAllowResource = serviceAllAllowResource
     }
