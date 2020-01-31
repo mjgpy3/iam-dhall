@@ -2,43 +2,12 @@
 
 ## Simple Policy
 
-For example, given the example in [`policy-examples.dhall`](./policy-examples.dhall), running `dhall-to-json` like so
+[`policy-examples.dhall`](./policy-examples.dhall) contains tests showing how policies might be generated.
+
+In these test cases, the dhall code on the right of the assertions is almost one-to-one with the JSON you would want for a policy. But, to actually generated the policy JSON you could run something like the following.
 
 ``` shell
 dhall-to-json <<< '(./policy-examples.dhall).specificBucketAccess "0123456789" "us-east-1" "cool.bucket" "some/path"'
 ```
 
-generates policy JSON
-
-``` json
-{
-  "Statement": [
-    {
-      "Action": [
-        "s3:ListBucket"
-      ],
-      "Effect": "Allow",
-      "Resource": [
-        "arn:aws:s3:::cool.bucket"
-      ],
-      "Sid": "BucketListing0"
-    },
-    {
-      "Action": [
-        "s3:PutObject",
-        "s3:GetObject",
-        "s3:DeleteObject",
-        "s3:PutObjectAcl"
-      ],
-      "Effect": "Allow",
-      "Resource": [
-        "arn:aws:s3:::cool.bucket/some/path/*"
-      ],
-      "Sid": "ObjectAccess1"
-    }
-  ],
-  "Version": "2012-10-17"
-}
-```
-
-Of course, any `Text` values can be passed to `specificBucketAccess`, or environment variables can be supplied via dhall's `env:VAR_NAME` syntax.
+The example functions use arguments to specify inputs, but it's easy enough to use dhall's `env:ENV_VAR` syntax to populate them with environment variables, if that's preferred.
