@@ -47,7 +47,7 @@ let bucketExample1 =
             ]
           }
 
-let bucketExample1 =
+let bucketExample2 =
         assert
       :   specificBucketAccess
             "0123456789"
