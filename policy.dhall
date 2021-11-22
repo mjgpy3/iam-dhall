@@ -17,6 +17,7 @@ let Service
       | Kms
       | QuickSight
       | ResourceGroups
+      | ExecuteApi
       >
 
 let Action
