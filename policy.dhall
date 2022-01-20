@@ -18,6 +18,7 @@ let Service
       | QuickSight
       | ResourceGroups
       | ExecuteApi
+      | Prometheus
       >
 
 let Action
