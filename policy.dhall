@@ -17,6 +17,8 @@ let Service
       | Kms
       | QuickSight
       | ResourceGroups
+      | ExecuteApi
+      | Prometheus
       >
 
 let Action

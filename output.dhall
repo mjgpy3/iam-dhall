@@ -33,6 +33,8 @@ let serviceIdentifier
           , Kms = "kms"
           , QuickSight = "quicksight"
           , ResourceGroups = "resource-groups"
+          , ExecuteApi = "execute-api"
+          , Prometheus = "aps"
           }
           service
 
@@ -64,6 +66,8 @@ let arnAccountId
           , Kms = aws.accountId
           , QuickSight = aws.accountId
           , ResourceGroups = aws.accountId
+          , ExecuteApi = aws.accountId
+          , Prometheus = aws.accountId
           }
           arn.service
 
@@ -86,6 +90,8 @@ let arnRegion
           , Kms = aws.region
           , QuickSight = aws.region
           , ResourceGroups = aws.region
+          , ExecuteApi = aws.region
+          , Prometheus = aws.region
           }
           arn.service
 
